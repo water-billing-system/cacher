@@ -23,8 +23,8 @@ public class RedisOperations {
 		try {
 
 			jedisClusterNodes = new HashSet<HostAndPort>();
-		    jedisClusterNodes.add(new HostAndPort("192.168.1.64", 6381));
-		    jedisClusterNodes.add(new HostAndPort("192.168.1.46", 6380));
+		    jedisClusterNodes.add(new HostAndPort("10.0.0.10", 6381));
+		    jedisClusterNodes.add(new HostAndPort("10.0.0.20", 6380));
 		    jc = new JedisCluster(jedisClusterNodes);
 			System.out.println("Connection to server sucessfully");
 			// check whether server is running or not

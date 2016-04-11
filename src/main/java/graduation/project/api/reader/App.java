@@ -21,14 +21,13 @@ public class App {
 		redis.connect();
 
 		URLConnection url = new
-		URLConnection("http://192.168.1.64:3000/bgs_tahaks");
+		URLConnection("http://10.0.0.10:3000/bgs_tahaks");
 		HttpURLConnection is = url.connect();
 		String responseBody = convertStreamToString(is.getInputStream());
 
 		JSONArray jsonArray = new JSONArray(responseBody);
 		//redis.deleteHashSet(jsonArray);
 		//redis.addHashSet(jsonArray);
-		
 		redis.getHashSet(jsonArray);
 
 
