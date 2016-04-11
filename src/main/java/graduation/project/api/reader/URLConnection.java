@@ -24,7 +24,7 @@ public class URLConnection {
 		this.url = url;
 	}
 	
-	
+	long startTime = System.currentTimeMillis();
 	
 	public HttpURLConnection connect() throws IOException {
 		

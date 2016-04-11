@@ -4,28 +4,33 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.HashMap;
-import java.util.Map;
+import java.net.HttpURLConnection;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
-
-import redis.clients.jedis.Jedis;
 
 public class App {
 
-	static Jedis redis;
-
 	public static void main(String[] args) throws IOException, JSONException {
+		
+		
+		
 
+		
 		RedisOperations redis = new RedisOperations();
 		redis.connect();
-		URLConnection url = new URLConnection("http://192.168.1.64:3000/sbs_muhatabs");
-		String responseBody = convertStreamToString(url.connect().getInputStream());
+
+		URLConnection url = new
+		URLConnection("http://192.168.1.64:3000/bgs_tahaks");
+		HttpURLConnection is = url.connect();
+		String responseBody = convertStreamToString(is.getInputStream());
+
 		JSONArray jsonArray = new JSONArray(responseBody);
-		redis.deleteHashSet(jsonArray);
-		redis.addHashSet(jsonArray);
+		//redis.deleteHashSet(jsonArray);
+		//redis.addHashSet(jsonArray);
+		
+		redis.getHashSet(jsonArray);
+
 
 	}
 
