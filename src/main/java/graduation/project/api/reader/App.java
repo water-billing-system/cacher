@@ -13,10 +13,6 @@ public class App {
 
 	public static void main(String[] args) throws IOException, JSONException {
 		
-		
-		
-
-		
 		RedisOperations redis = new RedisOperations();
 		redis.connect();
 
