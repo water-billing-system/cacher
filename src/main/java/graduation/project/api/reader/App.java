@@ -27,9 +27,8 @@ public class App {
 
 		JSONArray jsonArray = new JSONArray(responseBody);
 		//redis.deleteHashSet(jsonArray);
-		//redis.addHashSet(jsonArray);
-		
-		redis.getHashSet(jsonArray);
+		redis.get(jsonArray);
+		//redis.set(jsonArray);
 
 
 	}
