@@ -15,6 +15,7 @@ public class App {
 
         RedisOperations redis = new RedisOperations();
         redis.connect();
+        int[] list = {0, 1, 3, 6, 12};
 
         for (int i = 1; i <= 44413; i++) {
 
@@ -27,17 +28,17 @@ public class App {
             redis.set(urlname, responseBody);
             System.out.println(i);
 
-            for (int x=0; x<7; x=x+3){
-                String urlname1="/api/customers/"+i+"/payments/"+x;
+            for (int x=0; x<5; x++){
+                String urlname1="/api/customers/"+i+"/payments/"+list[x];
                 URLConnection url1 = new
-                        URLConnection("http://localhost:9000/api/customers/"+i+"/payments/"+x);
+                        URLConnection("http://localhost:9000/api/customers/"+i+"/payments/"+list[x]);
                 HttpURLConnection is1 = url1.connect();
                 String responseBody1 = convertStreamToString(is1.getInputStream());
                 redis.set(urlname1, responseBody1);
 
-                String urlname2="/api/customers/"+i+"/debts/"+x;
+                String urlname2="/api/customers/"+i+"/debts/"+list[x];
                 URLConnection url2 = new
-                        URLConnection("http://localhost:9000/api/customers/"+i+"/debts/"+x);
+                        URLConnection("http://localhost:9000/api/customers/"+i+"/debts/"+list[x]);
                 HttpURLConnection is2 = url2.connect();
                 String responseBody2 = convertStreamToString(is2.getInputStream());
                 redis.set(urlname2, responseBody2);
